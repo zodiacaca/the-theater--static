@@ -1,0 +1,10 @@
+
+// functions
+@function elementSize($key) {
+  @return map-get($elementSize, $key);
+}
+
+@function fontColor($key) {
+  @return map-get($fontColor, $key);
+}
+

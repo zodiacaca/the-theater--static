@@ -1,0 +1,32 @@
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #fff;
+}
+
+div, nav, ol, ul, li, button, article, img, input {
+  margin: 0;
+  padding: 0;
+  // border: 0;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+svg {
+  display: block;
+}
+

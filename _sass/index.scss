@@ -1,0 +1,12 @@
+
+$aside-width: 5rem;
+
+#ctrl-bar {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $aside-width;
+  height: 100%;
+  border-right: thin solid hsla(0, 0, 50%, 1);
+}

@@ -1,0 +1,35 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you expect to set up once and rarely needed to be edited after that.
+# Please restart the server process, after having changed this file.
+
+# Site settings
+title:
+author: Steven Lee
+email: 121059464@qq.com
+description: >- # this means to ignore newlines until "url:"
+url: "http://theater.nite-bite.gq" # the base hostname & protocol for your site, e.g. http://example.com
+subpath: "" # the subpath of your site, e.g. /blog/
+permalink: /:categories/:title:output_ext
+twitter_username:
+github_username: zodiacaca
+
+# Build settings
+markdown: kramdown
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - server.bat
+  - README.md
+
+  - feed.xml
