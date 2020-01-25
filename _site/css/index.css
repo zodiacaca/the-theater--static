@@ -81,7 +81,7 @@ body {
     height: 100vh;
     border-right: thin solid #b3b3b3; }
   #main .board {
-    position: absolute;
+    position: flex;
     margin-left: 3.75rem;
     width: 70%;
     height: 40rem;
@@ -95,6 +95,7 @@ body {
       #main .board .title h1 {
         position: relative;
         top: 6rem;
+        margin: 0;
         padding: 0 4rem;
         font-family: Monda;
         font-size: 2.1rem;
