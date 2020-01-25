@@ -16,20 +16,21 @@ $aside-width: 5rem;
 #main {
   display: inline-block;
   position: relative;
-  padding-left: $aside-width;
+  padding-left: $aside-width + $aside-width * 0.75;
   width: 100%;
   min-height: 100vh;
 
   aside {
-    position: absolute;
+    position: fixed;
+    margin-left: -$aside-width * 0.75;
     width: $aside-width * 0.75;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     border-right: thin solid hsla(0, 0, 70%, 1);
   }
 
   .board {
-    position: flex;
-    margin-left: $aside-width * 0.75;
+    position: absolute;
     width: 70%;
     height: 40rem;
     background: hsla(205, 100%, 80%, 1);
@@ -51,5 +52,29 @@ $aside-width: 5rem;
         color: hsla(0, 0, 45%, 1);
       }
     }
+  }
+
+  .list {
+    list-style: none;
+    position: relative;
+    top: 40rem;
+    width: 90%;
+    border: thin solid hsla(205, 100%, 40%, 1);
+
+    li {
+      display: inline-block;
+      width: 50%;
+      min-height: 25rem;
+      border: thin solid hsla(205, 100%, 40%, 1);
+    }
+  }
+
+  .promotion {
+    position: absolute;
+    top: 0;
+    left: 75%;
+    width: 25%;
+    height: 48rem;
+    background: hsla(10, 0%, 80%, 0.8);
   }
 }

@@ -72,17 +72,18 @@ body {
 #main {
   display: inline-block;
   position: relative;
-  padding-left: 5rem;
+  padding-left: 8.75rem;
   width: 100%;
   min-height: 100vh; }
   #main aside {
-    position: absolute;
+    position: fixed;
+    margin-left: -3.75rem;
     width: 3.75rem;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     border-right: thin solid #b3b3b3; }
   #main .board {
-    position: flex;
-    margin-left: 3.75rem;
+    position: absolute;
     width: 70%;
     height: 40rem;
     background: #99d5ff;
@@ -100,3 +101,21 @@ body {
         font-family: Monda;
         font-size: 2.1rem;
         color: #737373; }
+  #main .list {
+    list-style: none;
+    position: relative;
+    top: 40rem;
+    width: 90%;
+    border: thin solid #0077cc; }
+    #main .list li {
+      display: inline-block;
+      width: 50%;
+      min-height: 25rem;
+      border: thin solid #0077cc; }
+  #main .promotion {
+    position: absolute;
+    top: 0;
+    left: 75%;
+    width: 25%;
+    height: 48rem;
+    background: rgba(204, 204, 204, 0.8); }
