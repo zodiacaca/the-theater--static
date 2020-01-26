@@ -4,12 +4,15 @@ body {
 }
 
 $aside-width: 5rem;
+$aside-width-inner: $aside-width * 0.75;
+$slider-width: 50rem;
 
 #ctrl-bar {
   display: inline-block;
   position: fixed;
   width: $aside-width;
   height: 100vh;
+  background: white;
   border-right: thin solid hsla(0, 0, 80%, 1);
   z-index: 200;
 }
@@ -17,18 +20,23 @@ $aside-width: 5rem;
 #main {
   display: inline-block;
   position: relative;
-  padding-left: $aside-width + $aside-width * 0.75;
+  padding-left: $aside-width + $aside-width-inner;
   width: 100%;
   min-height: 100vh;
 
   .slider {
-
+    position: fixed;
+    margin-left: -($slider-width + $aside-width-inner * 0.55);
+    width: $slider-width;
+    height: 100vh;
+    border-right: thin solid hsla(0, 0, 80%, 1);
+    z-index: 190;
   }
 
   aside {
     position: fixed;
-    margin-left: -$aside-width * 0.75;
-    width: $aside-width * 0.75;
+    margin-left: -$aside-width-inner;
+    width: $aside-width-inner;
     min-height: 100vh;
     height: 100%;
     border-right: thin solid hsla(0, 0, 70%, 1);

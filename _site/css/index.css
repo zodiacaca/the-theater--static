@@ -67,6 +67,7 @@ body {
   position: fixed;
   width: 5rem;
   height: 100vh;
+  background: white;
   border-right: thin solid #cccccc;
   z-index: 200; }
 
@@ -76,6 +77,13 @@ body {
   padding-left: 8.75rem;
   width: 100%;
   min-height: 100vh; }
+  #main .slider {
+    position: fixed;
+    margin-left: -52.0625rem;
+    width: 50rem;
+    height: 100vh;
+    border-right: thin solid #cccccc;
+    z-index: 190; }
   #main aside {
     position: fixed;
     margin-left: -3.75rem;
