@@ -103,14 +103,14 @@ body {
         color: #737373; }
   #main .list {
     list-style: none;
+    display: flex;
     position: relative;
     top: 40rem;
     width: 90%;
     border: thin solid #0077cc; }
     #main .list li {
-      display: inline-block;
-      width: 50%;
-      min-height: 25rem;
+      width: 25%;
+      min-height: 30rem;
       border: thin solid #0077cc; }
   #main .promotion {
     position: absolute;

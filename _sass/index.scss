@@ -56,15 +56,15 @@ $aside-width: 5rem;
 
   .list {
     list-style: none;
+    display: flex;
     position: relative;
     top: 40rem;
     width: 90%;
     border: thin solid hsla(205, 100%, 40%, 1);
 
     li {
-      display: inline-block;
-      width: 50%;
-      min-height: 25rem;
+      width: 25%;
+      min-height: 30rem;
       border: thin solid hsla(205, 100%, 40%, 1);
     }
   }
