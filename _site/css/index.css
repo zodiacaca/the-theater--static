@@ -67,7 +67,8 @@ body {
   position: fixed;
   width: 5rem;
   height: 100vh;
-  border-right: thin solid #cccccc; }
+  border-right: thin solid #cccccc;
+  z-index: 200; }
 
 #main {
   display: inline-block;
@@ -81,7 +82,8 @@ body {
     width: 3.75rem;
     min-height: 100vh;
     height: 100%;
-    border-right: thin solid #b3b3b3; }
+    border-right: thin solid #b3b3b3;
+    z-index: 180; }
   #main .board {
     position: absolute;
     width: 70%;
@@ -102,16 +104,23 @@ body {
         font-size: 2.1rem;
         color: #737373; }
   #main .list {
-    list-style: none;
-    display: flex;
     position: relative;
     top: 40rem;
-    width: 90%;
-    border: thin solid #0077cc; }
-    #main .list li {
-      width: 25%;
-      min-height: 30rem;
+    width: 90%; }
+    #main .list .list-view {
+      position: relative;
+      width: 100%;
+      height: 3rem; }
+    #main .list .list-items {
+      list-style: none;
+      display: flex;
+      position: relative;
+      width: 100%;
       border: thin solid #0077cc; }
+      #main .list .list-items li {
+        width: 25%;
+        min-height: 30rem;
+        border: thin solid #0077cc; }
   #main .promotion {
     position: absolute;
     top: 0;
