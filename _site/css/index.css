@@ -82,8 +82,12 @@ body {
     margin-left: -52.0625rem;
     width: 50rem;
     height: 100vh;
+    background: rgba(255, 255, 255, 0.8);
     border-right: thin solid #cccccc;
-    z-index: 190; }
+    z-index: 190;
+    transition: margin-left 0.5s; }
+  #main .slider--open {
+    margin-left: 0; }
   #main aside {
     position: fixed;
     margin-left: -3.75rem;
@@ -96,9 +100,7 @@ body {
     position: absolute;
     width: 70%;
     height: 40rem;
-    background: #99d5ff;
-    border-bottom: medium solid #0077cc;
-    border-right: medium solid #0077cc; }
+    background: #99d5ff; }
     #main .board .title {
       position: relative;
       width: 100%;
@@ -123,12 +125,11 @@ body {
       list-style: none;
       display: flex;
       position: relative;
-      width: 100%;
-      border: thin solid #0077cc; }
+      width: 100%; }
       #main .list .list-items li {
         width: 25%;
         min-height: 30rem;
-        border: thin solid #0077cc; }
+        background: #b3b3b3; }
   #main .promotion {
     position: absolute;
     top: 0;

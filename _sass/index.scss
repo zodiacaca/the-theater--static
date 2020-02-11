@@ -29,8 +29,14 @@ $slider-width: 50rem;
     margin-left: -($slider-width + $aside-width-inner * 0.55);
     width: $slider-width;
     height: 100vh;
+    background: hsla(0, 0, 100%, 0.8);
     border-right: thin solid hsla(0, 0, 80%, 1);
     z-index: 190;
+    transition: margin-left 0.5s;
+  }
+
+  .slider--open {
+    margin-left: 0;
   }
 
   aside {
@@ -48,8 +54,6 @@ $slider-width: 50rem;
     width: 70%;
     height: 40rem;
     background: hsla(205, 100%, 80%, 1);
-    border-bottom: medium solid hsla(205, 100%, 40%, 1);
-    border-right: medium solid hsla(205, 100%, 40%, 1);
 
     .title {
       position: relative;
@@ -84,12 +88,11 @@ $slider-width: 50rem;
       display: flex;
       position: relative;
       width: 100%;
-      border: thin solid hsla(205, 100%, 40%, 1);
 
       li {
         width: 25%;
         min-height: 30rem;
-        border: thin solid hsla(205, 100%, 40%, 1);
+        background: hsla(0, 0, 70%, 1);
       }
     }
   }
