@@ -17,6 +17,7 @@
 <script defer="" src="/fonts/fa/all.js"></script>
 
 <script src="/library/jquery-3.2.1.min.js"></script>
+<script src="/library/dash.all.min.js"></script>
 
 
   <link rel="stylesheet" href="css/index.css">
@@ -30,9 +31,12 @@
 
     <div id="main">
 
-      <div class="slider"></div>
+      <div class="slider">
+        <video data-dashjs-player src="http://127.0.0.1:4000/videos/output/stream.mpd" controls></video>
+      </div>
 
-      <aside></aside>
+      <aside>
+      </aside>
 
       <div class="board">
         <header class="title">

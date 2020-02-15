@@ -3,6 +3,11 @@ body {
   overflow-x: hidden;
 }
 
+video {
+  width: 640px;
+  height: 360px;
+}
+
 $aside-width: 5rem;
 $aside-width-inner: $aside-width * 0.75;
 $slider-width: 50rem;
@@ -27,6 +32,7 @@ $slider-width: 50rem;
   .slider {
     position: fixed;
     margin-left: -($slider-width + $aside-width-inner * 0.55);
+    padding: 3rem;
     width: $slider-width;
     height: 100vh;
     background: hsla(0, 0, 100%, 0.8);
