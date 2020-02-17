@@ -4,7 +4,7 @@ $(".list-item").click(function(eventData) {
 })
 
 $("#main").click(function(eventData) {
-  if (eventData.target.className === "board" || eventData.target.id === "main") {
+  if (eventData.target.className.includes("board-ctn")) {
     $(".slider").removeClass("slider--open")
   }
 })
