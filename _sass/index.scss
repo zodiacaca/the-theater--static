@@ -1,0 +1,19 @@
+
+body {
+  overflow-x: hidden;
+  background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D);
+}
+
+$aside-width: 5rem;
+aside {
+  position: fixed;
+  width: $aside-width;
+  height: 100vh;
+}
+
+#main {
+  position: relative;
+  margin-left: $aside-width;
+  width: 100%;
+  min-height: 100vh;
+}
