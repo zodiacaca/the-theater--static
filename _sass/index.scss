@@ -16,4 +16,30 @@ aside {
   margin-left: $aside-width;
   width: 100%;
   min-height: 100vh;
+  border-left: thin solid hsla(0, 0, 70, 1);
+
+  header {
+    width: 100%;
+    height: 6rem;
+    border-bottom: thin solid hsla(0, 0, 60, 1);
+  }
+}
+
+.board-wrapper {
+  width: 200vw;
+  height: auto;
+
+  .reserved {
+    display: inline-block;
+    width: 25rem;
+    height: 25rem;
+  }
+
+  .board {
+    display: inline-block;
+    width: 100vw;
+    height: 30rem;
+    border: thin solid hsla(0, 0, 0, 0.2);
+    border-radius: 2rem;
+  }
 }
