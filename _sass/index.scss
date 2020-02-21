@@ -3,7 +3,7 @@ $color-bg: white;
 
 body {
   overflow-x: hidden;
-  background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D);
+  background: linear-gradient(to top, #C06C84, #6C5B7B, #355C7D);
 }
 
 $aside-width: 4rem;
@@ -23,16 +23,37 @@ aside {
 
   header {
     width: 100%;
-    height: 7rem;
+    height: 6rem;
     border-bottom: thin solid hsla(0, 0, 60, 1);
-    background: linear-gradient(120deg, $color-bg 0%, $color-bg 25%, transparent 65%);
+    background: linear-gradient(120deg, $color-bg 0%, $color-bg 20%, transparent 60%);
+
+    .header-menu {
+      position: relative;
+      top: 3.5rem;
+      margin-left: 1.5rem;
+      height: 2rem;
+
+      * {
+        text-align:center;
+      }
+      span {
+        font-family: Monda;
+        font-size: 1.25rem;
+        color: hsla(0, 0, 50, 1);
+      }
+      .header-menu-icon {
+        padding: 0.25rem;
+      }
+      .header-menu-text {
+        margin-left: 0.75rem;
+      }
+    }
   }
 }
 
 .board-wrapper {
   width: 200vw;
   height: auto;
-  background: $color-bg;
   overflow: hidden;
 
   .reserved {
@@ -46,9 +67,10 @@ aside {
     position: relative;
     width: 100vw;
     height: 27.5rem;
-    background: hsla(0, 0, 30, 1);
+    background: hsla(0, 0, 0, 0.6);
     border: thin solid hsla(0, 0, 0, 0.2);
     border-radius: 3rem;
+    box-shadow: 0 0 0 100vw $color-bg;
     transform-origin: 0 0;
     transform: skewX(15deg);
     overflow: hidden;
@@ -66,15 +88,19 @@ aside {
 }
 
 .list {
-  padding: 2rem 4rem;
+  padding: 2rem 3rem;
   width: 100%;
   height: 30rem;
   background: $color-bg;
 
-  h1 {
+  span {
+    display: inline-block;
     margin: 0;
-    padding: 0;
+    padding: 0.25rem 1rem;
     font-family: Monda;
+    font-size: 1.75rem;
     color: hsla(0, 0, 60, 1);
+    background: peachpuff;
+    border-radius: 1rem;
   }
 }
