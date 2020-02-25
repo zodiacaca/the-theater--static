@@ -4,6 +4,7 @@ $color-bg: white;
 body {
   overflow-x: hidden;
   background: linear-gradient(to top, #C06C84, #6C5B7B, #355C7D);
+  background-attachment: fixed;
 }
 
 $aside-width: 4rem;
@@ -52,8 +53,10 @@ aside {
 }
 
 .board-wrapper {
+  padding-bottom: 3rem;
   width: 200vw;
   height: auto;
+  border-bottom: thin solid hsla(0, 0, 60, 1);
   overflow: hidden;
 
   .reserved {
@@ -87,20 +90,35 @@ aside {
   }
 }
 
+$poster-height: 20rem;
 .list {
   padding: 2rem 3rem;
   width: 100%;
-  height: 30rem;
   background: $color-bg;
 
-  span {
+  p {
     display: inline-block;
-    margin: 0;
+    margin-top: 1rem;
     padding: 0.25rem 1rem;
     font-family: Monda;
     font-size: 1.75rem;
     color: hsla(0, 0, 60, 1);
-    background: peachpuff;
+  }
+
+  ol {
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+    margin: 1rem 2.5rem;
+    width: 40%;
+    max-height: $poster-height;
     border-radius: 1rem;
+    box-shadow: 0 0 2rem 0.5rem hsla(0, 0, 80, 1);
+    overflow: hidden;
+
+    img {
+      height: $poster-height;
+    }
   }
 }
