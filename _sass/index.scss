@@ -56,7 +56,6 @@ aside {
   padding-bottom: 3rem;
   width: 200vw;
   height: auto;
-  border-bottom: thin solid hsla(0, 0, 60, 1);
   overflow: hidden;
 
   .reserved {
@@ -100,7 +99,7 @@ $poster-height: 20rem;
     display: inline-block;
     margin-top: 1rem;
     padding: 0.25rem 1rem;
-    font-family: Monda;
+    font-family: Hei;
     font-size: 1.75rem;
     color: hsla(0, 0, 60, 1);
   }
@@ -118,7 +117,12 @@ $poster-height: 20rem;
     overflow: hidden;
 
     img {
+      display: inline-block;
       height: $poster-height;
+    }
+
+    .item-info {
+      display: inline-block;
     }
   }
 }
