@@ -7,7 +7,7 @@ body {
   background-attachment: fixed;
 }
 
-$aside-width: 4rem;
+$aside-width: 0.5rem;
 aside {
   position: fixed;
   width: $aside-width;
@@ -95,7 +95,7 @@ $poster-height: 20rem;
   width: 100%;
   background: $color-bg;
 
-  p {
+  .list-header {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.25rem 1rem;
@@ -117,12 +117,20 @@ $poster-height: 20rem;
     overflow: hidden;
 
     img {
-      display: inline-block;
+      display: block;
+      float: left;
       height: $poster-height;
     }
 
     .item-info {
-      display: inline-block;
+      display: block;
+      float: right;
+      padding: 2rem 4rem;
+      font-family: Hei;
+      font-size: 1.4rem;
+      color: hsla(0, 0, 10, 1);
+      border-left: thin solid hsla(0, 0, 80, 1);
+      border-bottom: thin solid hsla(0, 0, 80, 1);
     }
   }
 }
