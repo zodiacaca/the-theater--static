@@ -125,12 +125,18 @@ $poster-height: 20rem;
     .item-info {
       display: block;
       float: right;
-      padding: 2rem 4rem;
       font-family: Hei;
-      font-size: 1.4rem;
-      color: hsla(0, 0, 10, 1);
-      border-left: thin solid hsla(0, 0, 80, 1);
-      border-bottom: thin solid hsla(0, 0, 80, 1);
+
+      .movie-info {
+        display: block;
+        float: right;
+        padding: 2rem 4rem;
+        font-family: Hei;
+        font-size: 1.4rem;
+        color: hsla(0, 0, 10, 1);
+        border-left: thin solid hsla(0, 0, 80, 1);
+        border-bottom: thin solid hsla(0, 0, 80, 1);
+      }
     }
   }
 }
