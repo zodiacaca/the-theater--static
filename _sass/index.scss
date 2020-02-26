@@ -95,13 +95,15 @@ $poster-height: 20rem;
   width: 100%;
   background: $color-bg;
 
-  .list-header {
+  .list-title {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.25rem 1rem;
-    font-family: Hei;
+    font-family: Monda;
     font-size: 1.75rem;
     color: hsla(0, 0, 60, 1);
+    text-transform: uppercase;
+    transform: rotate(-90deg);
   }
 
   ol {
