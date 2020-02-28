@@ -90,12 +90,13 @@ aside {
 }
 
 $poster-height: 20rem;
+$card-radius: 1rem;
 .list {
   padding: 2rem 3rem;
   width: 100%;
   background: $color-bg;
 
-  .list-title {
+  .list-header {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.25rem 1rem;
@@ -111,35 +112,54 @@ $poster-height: 20rem;
   }
   li {
     display: inline-block;
-    margin: 1rem 2.5rem;
+    margin: 1rem 5rem;
     width: 40%;
-    max-height: $poster-height;
-    border-radius: 1rem;
+    height: $poster-height * 0.95;
+    border-radius: $card-radius;
     box-shadow: 0 0 2rem 0.5rem hsla(0, 0, 80, 1);
-    overflow: hidden;
 
-    img {
-      display: block;
-      float: left;
-      height: $poster-height;
+    .item-poster {
+      position: absolute;
+      margin-top: -$poster-height * 0.025;
+      border-radius: $card-radius * 0.5;
+      box-shadow: 0 0 2rem 0.5rem hsla(0, 0, 65, 1);
+      overflow: hidden;
+
+      img {
+        display: block;
+        height: $poster-height;
+      }
     }
 
     .item-info {
       display: block;
       float: right;
+      width: 100%;
       font-family: Hei;
 
-      .movie-info {
+      .info-data {
         display: block;
-        float: right;
+      }
 
-        .info-top {
-          padding: 2rem 4rem;
+      .info-top {
+        padding-left: 15rem;
+        background: hsla(0, 0, 95, 1);
+        border-bottom: thin solid hsla(200, 50, 80, 1);
+        border-radius: 0 $card-radius 0 0;
+        text-align: center;
+
+        .info-title {
+          margin-left: -2rem;
+          padding-top: 2rem;
           font-family: Hei;
           font-size: 1.4rem;
           color: hsla(0, 0, 10, 1);
-          border-left: thin solid hsla(0, 0, 80, 1);
-          border-bottom: thin solid hsla(0, 0, 80, 1);
+        }
+
+        .info-length {
+          padding: 0.5rem;
+          font-size: 0.9rem;
+          color: hsla(200, 50, 70, 1);
         }
       }
     }
