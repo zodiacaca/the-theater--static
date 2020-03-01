@@ -1,19 +1,4 @@
 
-// dictionaries
-const covers = {
-  1: {
-    img: "/images/miss-sloane.jpg",
-    bg: "linear-gradient(90deg, blue, transparent)"
-  },
-  2: {
-    img: "/images/miss-sloane.jpg",
-    bg: "linear-gradient(90deg, blue, transparent)"
-  },
-}
-
-// board
-
-
 // slider
 $(".list-item").click(function(eventData) {
   $(".slider").addClass("slider--open")
