@@ -1,0 +1,40 @@
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: hsla(0, 0, 0, 0.975);
+}
+
+$video-height: 96;
+.play-info {
+  position: fixed;
+  margin-top: vHeight($video-height);
+  width: 100%;
+
+  * {
+    display: inline-block;
+    position: relative;
+    left: 35%;
+    padding-top: 0.25rem;
+    width: 15%;
+    height: 2rem;
+    border-left: thin solid hsla(215, 50, 20, 0.5);
+    background: hsla(215, 50, 20, 0.1);
+    background-clip: content-box;
+  }
+}
+
+video {
+  position: relative;
+  left: 50vw;
+  height: vHeight($video-height);
+  outline: none;
+  transform: translateX(-50%);
+}

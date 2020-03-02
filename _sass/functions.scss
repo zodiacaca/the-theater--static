@@ -8,3 +8,10 @@
   @return map-get($fontColor, $key);
 }
 
+@function vWidth($prcnt) {
+  @return $prcnt + vw;
+}
+
+@function vHeight($prcnt) {
+  @return $prcnt + vh;
+}
