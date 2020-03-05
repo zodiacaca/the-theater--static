@@ -14,7 +14,10 @@ body {
 
 .quality--selected {
   border: thin solid hsla(215, 50, 35, 1);
-  border-radius: 0.25rem;
+  border-radius: 0.125rem;
+}
+.quality--unavailable {
+  color: hsla(215, 50, 20, 1);
 }
 
 $video-height: 96;
@@ -46,6 +49,11 @@ $video-height: 96;
         left: percentage($init + 0.15 * ($i - 1));
       }
     }
+  }
+
+  .quality-option {
+    margin-top: -0.125rem;
+    padding: 0.125rem;
   }
 
   span {

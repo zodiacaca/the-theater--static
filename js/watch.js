@@ -29,6 +29,7 @@ const updateInfo = () => {
   speed += 'Kb/s'
   $(".speed span")[0].innerHTML = speed
 
+  $(".1080p").addClass("quality--unavailable")
   let quality = player.getQualityFor('video')
   $(".quality-option").removeClass("quality--selected")
   if (quality === 0) {
