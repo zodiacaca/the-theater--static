@@ -30,10 +30,11 @@ const updateInfo = () => {
   $(".speed span")[0].innerHTML = speed
 
   let quality = player.getQualityFor('video')
+  $(".quality-option").removeClass("quality--selected")
   if (quality === 0) {
-
+    $(".360p").addClass("quality--selected")
   } else if (quality === 1) {
-
+    $(".720p").addClass("quality--selected")
   }
 
   setTimeout(() => {
