@@ -13,5 +13,7 @@
   {% include library.html %}
 
   <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/watch.css">
+  {% if page.title == "Watch" %}
+    <link rel="stylesheet" href="css/watch.css">
+  {% endif %}
 </head>

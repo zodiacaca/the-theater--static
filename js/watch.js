@@ -20,4 +20,23 @@ player.initialize($("video")[0], url, false)
 player.on("canPlay", function() {
   // const bitrates = player.getBitrateInfoListFor("video")
   // player.setQualityFor("video", 0)
+  updateInfo()
 })
+
+const updateInfo = () => {
+  let speed = 'Ave. Throughput : '
+  speed += Math.floor(player.getAverageThroughput('video') / 1000)
+  speed += 'Kb/s'
+  $(".speed span")[0].innerHTML = speed
+
+  let quality = player.getQualityFor('video')
+  if (quality === 0) {
+
+  } else if (quality === 1) {
+
+  }
+
+  setTimeout(() => {
+    updateInfo()
+  }, 100)
+}
