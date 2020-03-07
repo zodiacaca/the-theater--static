@@ -142,21 +142,31 @@ $card-radius: 1rem;
         display: block;
       }
 
-      .info-name {
+      .info-right {
         display: block;
         float: right;
-        width: 20rem;
-        border-bottom: thin solid hsla(0, 0, 40, 1);
-        -webkit-mask: linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%);
-        z-index: 50;
 
-        .info-title {
+        .info-right-up {
           float: right;
-          padding: 1.5rem;
-          padding-right: 2rem;
-          font-family: Hei;
-          font-size: 1.4rem;
-          color: hsla(0, 0, 10, 1);
+          width: 20rem;
+          border-bottom: thin solid hsla(0, 0, 40, 1);
+          -webkit-mask: linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%);
+          z-index: 50;
+
+          .info-data {
+            padding: 1.5rem;
+          }
+          .info-play {
+            float: left;
+            color: hsla(0, 0, 20, 1);
+          }
+          .info-title {
+            float: right;
+            padding-right: 2rem;
+            font-family: Hei;
+            font-size: 1.4rem;
+            color: hsla(0, 0, 10, 1);
+          }
         }
       }
     }
