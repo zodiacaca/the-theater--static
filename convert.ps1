@@ -1,8 +1,8 @@
-﻿$file_path = "Chernobyl\Chernobyl.mkv"
-$subtitle_path = "Chernobyl\Chernobyl (1).srt"
-$output_path = "E:\NAS-01-E\"
-$file = [System.IO.DirectoryInfo]($output_path + $file_path)
-$subtitle = [System.IO.DirectoryInfo]($output_path + $subtitle_path)
+﻿$file_path = "E:\NAS-01-E\Chernobyl\Chernobyl (1).mkv"
+$subtitle_path = "E:\NAS-01-E\Chernobyl\Chernobyl (1).srt"
+$output_path = "C:\Users\Steve\WebApp\express-video\cdn\videos\output"
+$file = [System.IO.DirectoryInfo]($file_path)
+$subtitle = [System.IO.DirectoryInfo]($subtitle_path)
 $ffmpeg_path = "C:\Program Files\FFmpeg\bin\"
 $bento4_path = "C:\Python27\Tools\Bento4-SDK\bin\"
 
