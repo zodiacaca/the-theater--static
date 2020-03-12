@@ -10,57 +10,52 @@ cd $ffmpeg_path
 $qualities = @("1280:720", "640:360")
 for ($i = 0; $i -lt $qualities.length; $i++) {
   $params = [System.Collections.ArrayList]@()
-
   $params.Add("-i")
   $params.Add($file)
 
-  $params.Add("-s")
-  $params.Add($qualities[$i])
-
   if (!($file.Extension -eq '.mp4')) {
-    $params.Add("-f")
-    $params.Add("mp4")
     $params.Add("-c:v")
     $params.Add("libx264")
     $params.Add("-c:a")
     $params.Add("aac")
     $params.Add("-b:a")
     $params.Add("192k")
-    $params.Add("-strict")
-    $params.Add("experimental")
   } else {
     $params.Add("-c:a")
     $params.Add("copy")
     $params.Add("-b:a")
     $params.Add("192k")
   }
+  $params.Add("-ac")
+  $params.Add("2")
 
-  $output0 = "output" + $i + ".mp4"
-  .\ffmpeg-hi10-heaac @params $output0
+  $params.Add("-preset")
+  $params.Add("slower")
 
-  $params2 = [System.Collections.ArrayList]@()
-  $params2.Add("-i")
-  $params2.Add($output0)
+  $params.Add("-vf")
+  $scale = "scale=" + $qualities[$i]
   if ($subtitle.Extension -eq '.srt') {
     Copy-Item $subtitle -Destination ".\"
-    $srt = "subtitles=" + $subtitle.Name
-    $params2.Add("-vf")
-    $params2.Add($srt)
+    $srt = "subtitles=" + $subtitle.Name + "," + $scale
+    $params.Add($srt)
   } elseif ($subtitle.Extension -eq '.ass') {
     Copy-Item $subtitle -Destination ".\"
-    $ass = "subtitles=" + $subtitle.Name
-    $params2.Add("-vf")
-    $params2.Add($ass)
+    $ass = "subtitles=" + $subtitle.Name + "," + $scale
+    $params.Add($ass)
+  } else {
+    $params.Add($scale)
   }
-  $params2.Add("-force_key_frames")
-  $params2.Add("expr:eq(mod(n,24),0)")
-  $output1 = "output-" + $i + ".mp4"
-  .\ffmpeg @params2 $output1
 
-  Move-Item $output1 -Destination $bento4_path
-  Remove-Item $output0
+  $params.Add("-force_key_frames")
+  $params.Add("expr:gte(t,n_forced*1)")
+  $params.Add("-x264-params")
+  $params.Add("rc-lookahead=1s:keyint=2s:min-keyint=1s")
+
+  $output = "output-" + $i + ".mp4"
+  .\ffmpeg @params $output
+
+  Move-Item $output -Destination $bento4_path
   Write-Host @params
-  Write-Host @params2
 }
 Remove-Item * -Include *.srt
 Remove-Item * -Include *.ass
