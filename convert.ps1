@@ -35,26 +35,32 @@ for ($i = 0; $i -lt $qualities.length; $i++) {
     $params.Add("192k")
   }
 
+  $output0 = "output" + $i + ".mp4"
+  .\ffmpeg-hi10-heaac @params $output0
+
+  $params2 = [System.Collections.ArrayList]@()
+  $params2.Add("-i")
+  $params2.Add($output0)
   if ($subtitle.Extension -eq '.srt') {
     Copy-Item $subtitle -Destination ".\"
     $srt = "subtitles=" + $subtitle.Name
-    $params.Add("-vf")
-    $params.Add($srt)
+    $params2.Add("-vf")
+    $params2.Add($srt)
   } elseif ($subtitle.Extension -eq '.ass') {
     Copy-Item $subtitle -Destination ".\"
     $ass = "subtitles=" + $subtitle.Name
-    $params.Add("-vf")
-    $params.Add($ass)
+    $params2.Add("-vf")
+    $params2.Add($ass)
   }
+  $params2.Add("-force_key_frames")
+  $params2.Add("expr:eq(mod(n,24),0)")
+  $output1 = "output-" + $i + ".mp4"
+  .\ffmpeg @params2 $output1
 
-  $params.Add("-force_key_frames")
-  $params.Add("expr:gte(t,n_forced*1)")
-
-  $output = "output-" + $i + ".mp4"
-  .\ffmpeg-hi10-heaac @params $output
-
-  Move-Item $output -Destination $bento4_path
+  Move-Item $output1 -Destination $bento4_path
+  Remove-Item $output0
   Write-Host @params
+  Write-Host @params2
 }
 Remove-Item * -Include *.srt
 Remove-Item * -Include *.ass
