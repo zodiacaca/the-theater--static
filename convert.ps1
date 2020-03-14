@@ -1,5 +1,5 @@
-﻿$file_path = "E:\NAS-01-E\Chernobyl\Chernobyl (1).mkv"
-$subtitle_path = "E:\NAS-01-E\Chernobyl\Chernobyl (1).srt"
+﻿$file_path = "E:\NAS-01-E\Chernobyl\Chernobyl.mkv"
+$subtitle_path = ""
 $output_path = "C:\Users\Steve\WebApp\express-video\cdn\videos\output"
 $file = [System.IO.DirectoryInfo]($file_path)
 $subtitle = [System.IO.DirectoryInfo]($subtitle_path)
@@ -32,6 +32,11 @@ for ($i = 0; $i -lt $qualities.length; $i++) {
   $params.Add("-preset")
   $params.Add("slower")
 
+  $params.Add("-r")
+  $params.Add("24")
+  $params.Add("-vsync")
+  $params.Add("1")
+
   $params.Add("-vf")
   $scale = "scale=" + $qualities[$i]
   if ($subtitle.Extension -eq '.srt') {
@@ -47,9 +52,9 @@ for ($i = 0; $i -lt $qualities.length; $i++) {
   }
 
   $params.Add("-force_key_frames")
-  $params.Add("expr:gte(t,n_forced*1)")
+  $params.Add("expr:eq(mod(n,24),0)")
   $params.Add("-x264-params")
-  $params.Add("rc-lookahead=1s:keyint=2s:min-keyint=1s")
+  $params.Add("keyint=24:min-keyint=12")
 
   $output = "output-" + $i + ".mp4"
   .\ffmpeg @params $output
@@ -60,7 +65,8 @@ for ($i = 0; $i -lt $qualities.length; $i++) {
 Remove-Item * -Include *.srt
 Remove-Item * -Include *.ass
 cd $bento4_path
+Remove-Item -Path $output_path -Force -Recurse -ErrorAction SilentlyContinue
 .\mp4fragment --fragment-duration 2000 "output-0.mp4" "output-0-frgmnt.mp4"
 .\mp4fragment --fragment-duration 2000 "output-1.mp4" "output-1-frgmnt.mp4"
-.\mp4dash "output-0-frgmnt.mp4" "output-1-frgmnt.mp4" -o "E:\NAS-01-E\output"
+.\mp4dash "output-0-frgmnt.mp4" "output-1-frgmnt.mp4" -o $output_path
 Remove-Item * -Include *.mp4
