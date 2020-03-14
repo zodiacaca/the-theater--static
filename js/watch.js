@@ -63,10 +63,15 @@ REST.model = {
     })
   },
   sendAnalyseData: function() {
+    const browserInfo = {
+      agent: navigator.userAgent,
+      version: navigator.appVersion,
+    }
     const ajax_options = {
       type: 'PUT',
       url: 'performance_analyse',
-      data: { userAgent: navigator.userAgent },
+      contentType: 'application/json',
+      data: JSON.stringify(browserInfo),
     }
     $.ajax(ajax_options)
     .done(function(data) {
@@ -77,6 +82,7 @@ REST.model = {
     })
   },
 }
+REST.model.sendAnalyseData()
 
 REST.controller = (function() {
   $(window).scroll(function(eventData) {

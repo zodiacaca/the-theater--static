@@ -31,6 +31,6 @@ exclude:
   - vendor/ruby/
   - server.bat
   - README.md
-  - *.ps1
+  - convert.ps1
 
   - feed.xml
