@@ -50,7 +50,7 @@ REST.model = {
   getList: function(from, to) {
     const ajax_options = {
       type: 'GET',
-      url: `feed/titles?${from}=1,${to}=10`,
+      url: `feed/titles?from=${from},to=${to}`,
       accepts: 'application/json',
       dataType: 'json',
     }
