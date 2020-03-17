@@ -1,4 +1,6 @@
 
+const list = []
+
 // slider
 $(".list-item").click(function(eventData) {
   $(".slider").addClass("slider--open")
@@ -12,6 +14,7 @@ $("#main").click(function(eventData) {
     $(".slider").removeClass("slider--open")
   }
 })
+
 
 // dash
 const url = "http://192.168.10.11:3000/videos/output/stream.mpd"
@@ -44,19 +47,22 @@ const updateInfo = () => {
 }
 
 
+// REST
 const REST = {}
 
 REST.model = {
-  getList: function(from, to) {
+  getList: function(from = 0, to = 10) {
     const ajax_options = {
       type: 'GET',
-      url: `feed/titles?from=${from},to=${to}`,
+      url: `feed/titles?from=${from}&to=${to}`,
       accepts: 'application/json',
       dataType: 'json',
     }
     $.ajax(ajax_options)
     .done(function(data) {
-
+      data.titles.forEach((title) => {
+        list.push(title)
+      })
     })
     .fail(function(xhr, textStatus, errorThrown) {
 
@@ -82,6 +88,7 @@ REST.model = {
     })
   },
 }
+REST.model.getList()
 REST.model.sendAnalyseData()
 
 REST.controller = (function() {
