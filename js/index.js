@@ -15,4 +15,12 @@ $("#main").click(function(eventData) {
   }
 })
 
-REST.model.getList(list)
+REST.view.freshList = function() {
+  list.forEach((item) => {
+    if (item.title != "Demo") {
+      let node = $(".list ol li")[0].cloneNode(true)
+      $(".list")[0].appendChild(node)
+    }
+  })
+}
+REST.model.getList(list, "freshList")

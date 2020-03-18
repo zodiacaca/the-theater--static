@@ -2,7 +2,7 @@
 const REST = {}
 
 REST.model = {
-  getList: function(list, from = 0, to = 10) {
+  getList: function(list, action, from = 0, to = 10) {
     const ajax_options = {
       type: 'GET',
       url: `feed/titles?from=${from}&to=${to}`,
@@ -14,6 +14,7 @@ REST.model = {
       data.titles.forEach((title) => {
         list.push(title)
       })
+      REST.view[action]()
     })
     .fail(function(xhr, textStatus, errorThrown) {
 
@@ -48,9 +49,6 @@ REST.controller = (function() {
 })()
 
 REST.view = {
-  freshList: function() {
-
-  },
   popSidePanel: function() {
 
   },
