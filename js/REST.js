@@ -39,7 +39,6 @@ REST.model = {
     })
   },
 }
-REST.model.getList(list)
 REST.model.sendAnalyseData()
 
 REST.controller = (function() {
