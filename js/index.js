@@ -16,11 +16,25 @@ $("#main").click(function(eventData) {
 })
 
 REST.view.freshList = function() {
+  const $demo = $(document.querySelector(".list ol li"))
   list.forEach((item) => {
     if (item.title != "Demo") {
-      let node = $(".list ol li")[0].cloneNode(true)
-      $(".list")[0].appendChild(node)
+      const node = document.querySelector(".list ol li").cloneNode(true)
+      let $node = $(node)
+      $node.find(".info-title").text(item.title)
+      $node.find(".item-poster img").attr("src", item.poster)
+      setTimeout(() => $node.addClass("list-item--appear"), 0)
+      $node.click(function() {
+        window.location.href = `${window.location}/watch.html?v=${item.id}`
+      })
+      const lst = document.querySelector(".list")
+      lst.appendChild($node[0])
+    } else {
+      $demo.click(function() {
+        window.location.href = `${window.location}/watch.html?v=${item.id}`
+      })
     }
   })
+  setTimeout(() => $demo.addClass("list-item--appear"), 0)
 }
 REST.model.getList(list, "freshList")

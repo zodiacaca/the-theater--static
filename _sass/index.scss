@@ -89,6 +89,10 @@ aside {
   }
 }
 
+.list .list-item--appear {
+  opacity: 1;
+}
+
 $poster-height: 20rem;
 $card-radius: 1rem;
 .list {
@@ -117,6 +121,8 @@ $card-radius: 1rem;
     width: 60%;
     height: $poster-height * 0.95;
     border-radius: $card-radius;
+    opacity: 0;
+    transition: opacity 2s;
 
     .item-poster {
       position: absolute;
