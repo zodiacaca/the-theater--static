@@ -1,6 +1,6 @@
 
 // dash
-const url = "http://192.168.10.11:3000/videos/AE0WJaEh/stream.mpd"
+const url = `${window.location}/videos/AE0WJaEh/stream.mpd`
 const player = dashjs.MediaPlayer().create()
 player.initialize(document.querySelector("video"), url, false)
 player.on("canPlay", function() {
