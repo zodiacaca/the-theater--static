@@ -25,13 +25,15 @@ REST.view.freshList = function() {
       $node.find(".item-poster img").attr("src", item.poster)
       setTimeout(() => $node.addClass("list-item--appear"), 0)
       $node.click(function() {
-        window.location.href = `${window.location}/watch?v=${item.id}`
+        const s = item.seasons ? `&s=1&e=1` : ''
+        const ova = item.OVAs ? `&ova=1&e=1` : ''
+        window.location.href = `${window.location}watch?id=${item.id}${s}${ova}`
       })
       const lst = document.querySelector(".list")
       lst.appendChild($node[0])
     } else {
       $demo.click(function() {
-        window.location.href = `${window.location}/watch?v=${item.id}`
+        window.location.href = `${window.location}watch?id=${item.id}`
       })
     }
   })

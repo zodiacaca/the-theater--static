@@ -1,6 +1,19 @@
 
 // dash
-const url = `${window.location}/videos/AE0WJaEh/stream.mpd`
+const getManifest = () => {
+  const prot = window.location.protocol
+  const host = window.location.host
+  const id = $('video').attr('id')
+  const s = $('video').attr('s') ? `${$('video').attr('s')}/` : ''
+  const ova = $('video').attr('ova') ? `${$('video').attr('ova')}/` : ''
+  const e = $('video').attr('e') ? `${$('video').attr('e')}/` : ''
+
+  let manifest = `${prot}//${host}/videos/${id}/${s}${ova}${e}stream.mpd`
+
+  return manifest
+}
+
+const url = getManifest()
 const player = dashjs.MediaPlayer().create()
 player.initialize(document.querySelector("video"), url, false)
 player.on("canPlay", function() {
