@@ -128,7 +128,7 @@ $card-radius: 1rem;
       position: absolute;
       margin-top: -$poster-height * 0.025;
       border-radius: $card-radius * 0.5;
-      box-shadow: 0 0 2rem 0.5rem hsla(0, 0, 65, 1);
+      box-shadow: -0.5rem 0.5rem 1rem 0.5rem hsla(0, 0, 65, 1);
       overflow: hidden;
       z-index: 55;
 
@@ -159,9 +159,9 @@ $card-radius: 1rem;
           padding: 0 1.5rem;
           width: 20rem;
           background: transparent;
-          border: medium solid hsla(0, 0, 80, 1);
-          border-bottom: thin solid hsla(0, 0, 40, 1);
-          -webkit-mask: linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%);
+          border: thin solid hsla(0, 0, 80, 1);
+          border-radius: 0.25rem;
+          box-shadow: -0.25rem 0.25rem 0.25rem 0.125rem hsla(0, 0, 85, 1);
           z-index: 50;
 
           .info-data {
@@ -169,14 +169,13 @@ $card-radius: 1rem;
           }
           .info-play {
             float: left;
-            color: hsla(0, 0, 20, 1);
+            color: hsla(0, 0, 40, 1);
           }
           .info-title {
             float: right;
-            padding-right: 2rem;
             font-family: Hei;
             font-size: 1.4rem;
-            color: hsla(0, 0, 10, 1);
+            color: hsla(0, 0, 40, 1);
           }
         }
       }
