@@ -20,6 +20,42 @@ player.on("canPlay", function() {
   // const bitrates = player.getBitrateInfoListFor("video")
   // player.setQualityFor("video", 0)
   updateInfo()
+
+  player.updateSettings({
+    streaming: {
+      abr: {
+        stableBufferTime: 240,
+        bufferTimeAtTopQualityLongForm: 240,
+      }
+    }
+  })
+
+  const qualityOption = document.getElementsByClassName("quality-option")
+  for (const key in qualityOption) {
+    qualityOption[key].onclick = function () {
+      if ($(this).hasClass("quality--selected")) {
+        player.updateSettings({
+          streaming: {
+            abr: {
+              autoSwitchBitrate: { audio: true, video: true }
+            }
+          }
+        })
+        $(this).removeClass("quality--selected")
+      } else {
+        $(".quality-option").removeClass("quality--selected")
+        player.updateSettings({
+          streaming: {
+            abr: {
+              autoSwitchBitrate: { audio: true, video: false }
+            }
+          }
+        })
+        player.setQualityFor('video', $(".quality-option").length - $(this).index())
+        $(this).addClass("quality--selected")
+      }
+    }
+  }
 })
 
 const updateInfo = () => {
@@ -28,14 +64,15 @@ const updateInfo = () => {
   speed += 'Kb/s'
   $(".speed span").text(speed)
 
-  $(".1080p").addClass("quality--unavailable")
-  let quality = player.getQualityFor('video')
-  $(".quality-option").removeClass("quality--selected")
-  if (quality === 0) {
-    $(".360p").addClass("quality--selected")
-  } else if (quality === 1) {
-    $(".720p").addClass("quality--selected")
+  $(".q-1080p").addClass("quality--unavailable")
+  const indicator = document.querySelector(".quality-indicator")
+  const qIndex = player.getQualityFor('video')
+  const quality = {
+    0: document.querySelector(".q-360p"),
+    1: document.querySelector(".q-720p"),
+    2: document.querySelector(".q-1080p"),
   }
+  indicator.style.left = (quality[qIndex].offsetLeft + quality[qIndex].clientWidth * 0.4) + "px"
 
   setTimeout(() => {
     updateInfo()
