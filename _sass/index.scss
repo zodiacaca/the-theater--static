@@ -7,7 +7,7 @@ body {
   background-attachment: fixed;
 }
 
-$aside-width: 0.5rem;
+$aside-width: 0.25rem;
 aside {
   position: fixed;
   width: $aside-width;
@@ -181,4 +181,42 @@ $card-radius: 1rem;
       }
     }
   }
+}
+
+.info-left-middle {
+  width: 60%;
+}
+.info-season {
+  padding: 0.5rem 1rem;
+
+  h3 {
+    font-family: Hei;
+    font-weight: normal;
+    color: hsla(0, 0, 60, 1);
+    letter-spacing: 0.5rem;
+  }
+  .separator {
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 0.25rem;
+    background: hsla(0, 100, 30, 1);
+    border-radius: 0.5rem;
+  }
+}
+.info-episode {
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: hsla(0, 0, 50, 1);
+  line-height: 3rem;
+  margin-right: 1rem;
+  width: 3rem;
+  background: hsla(0, 0, 95, 1);
+  border: thin solid hsla(0, 0, 80, 1);
+  border-radius: 0.5rem;
+}
+
+.unavailable {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.3;
 }
