@@ -39,6 +39,19 @@ REST.model = {
 
     })
   },
+  checkMediaFile: function(id, s, e, action, arg1) {
+    const ajax_options = {
+      type: 'GET',
+      url: `checkMediaFile?id=${id}&s=${s}&e=${e}`,
+    }
+    $.ajax(ajax_options)
+    .done(function(data) {
+      REST.view[action](arg1)
+    })
+    .fail(function(xhr, textStatus, errorThrown) {
+
+    })
+  },
 }
 REST.model.sendAnalyseData()
 
