@@ -39,17 +39,17 @@ REST.model = {
 
     })
   },
-  checkMediaFile: function(id, s, e, action, arg1) {
+  checkMediaFile: function(id, s, e, action, arg1, arg2) {
     const ajax_options = {
       type: 'GET',
       url: `checkMediaFile?id=${id}&s=${s}&e=${e}`,
     }
     $.ajax(ajax_options)
     .done(function(data) {
-      REST.view[action](arg1)
+      REST.view[action](arg1, arg2, true)
     })
     .fail(function(xhr, textStatus, errorThrown) {
-
+      REST.view[action](arg1, arg2, false)
     })
   },
 }
