@@ -155,6 +155,7 @@ $card-radius: 1rem;
         .info-right-up {
           float: right;
           cursor: pointer;
+          position: relative;
           margin-top: 0.5rem;
           padding: 0 1.5rem;
           width: 20rem;
@@ -162,6 +163,7 @@ $card-radius: 1rem;
           border: thin solid hsla(0, 0, 80, 1);
           border-radius: 0.25rem;
           box-shadow: -0.25rem 0.25rem 0.25rem 0.125rem hsla(0, 0, 85, 1);
+          overflow: hidden;
           z-index: 50;
 
           .info-data {
@@ -205,40 +207,42 @@ $card-radius: 1rem;
 }
 .info-episode {
   cursor: pointer;
-  font-size: 1.4rem;
-  color: hsla(0, 0, 50, 1);
-  line-height: 3rem;
+  position: relative;
   margin-right: 1rem;
   width: 3rem;
   background: hsla(0, 0, 95, 1);
   border: thin solid hsla(0, 0, 80, 1);
   border-radius: 0.5rem;
-}
 
-.overlay {
-  cursor: default;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  background: hsla(0, 0, 80, 1);
+  span {
+    display: block;
+    position: relative;
+    font-size: 1.4rem;
+    color: hsla(0, 0, 50, 1);
+    line-height: 3rem;
+  }
 }
 
 // loading animation
+$animWidth: 80px;
+$lineWidth: 4px;
 .lds-ripple-wrapper {
   position: absolute;
+  top: 0;
   left: 50%;
-  transform: translateX(-40px);
+  transform: translateX(-$animWidth * 0.5);
+  transform-origin: 50% 0;
 }
 .lds-ripple {
-  display: inline-block;
+  display: block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: $animWidth;
+  height: $animWidth;
 }
 .lds-ripple div {
   position: absolute;
-  border: 4px solid #fff;
   border-radius: 50%;
+  box-shadow: 0 0 $lineWidth 0 hsla(0, 0, 0, 1) inset;
   opacity: 1;
   animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
@@ -247,17 +251,23 @@ $card-radius: 1rem;
 }
 @keyframes lds-ripple {
   0% {
-    top: 36px;
-    left: 36px;
+    top: $animWidth * 0.5;
+    left: $animWidth * 0.5;
     width: 0;
     height: 0;
     opacity: 1;
   }
   100% {
-    top: 0px;
-    left: 0px;
-    width: 72px;
-    height: 72px;
+    top: 0;
+    left: 0;
+    width: $animWidth;
+    height: $animWidth;
     opacity: 0;
   }
+}
+
+.unavailable {
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0.75;
 }
