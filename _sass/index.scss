@@ -152,7 +152,7 @@ $card-radius: 1rem;
         display: block;
         float: right;
 
-        .info-right-up {
+        .info-play-button {
           float: right;
           cursor: pointer;
           position: relative;
@@ -224,8 +224,8 @@ $card-radius: 1rem;
 }
 
 // loading animation
-$animWidth: 80px;
-$lineWidth: 4px;
+$animWidth: 100px;
+$lineWidth: 5px;
 .lds-ripple-wrapper {
   position: absolute;
   top: 0;
