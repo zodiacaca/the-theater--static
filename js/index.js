@@ -3,32 +3,53 @@ const list = []
 
 REST.view.beforeFetch = {}
 REST.view.beforeFetch.blockElement = function(ele, loading = true) {
-  const overlayString = '<div class="overlay"></div>'
-  ele.insertAdjacentHTML('beforeend', overlayString)
+  $(ele).addClass("unavailable")
+
   if (loading) {
     let ldsWrapper = ele.appendChild(document.createElement('div'))
     $(ldsWrapper).addClass("lds-ripple-wrapper")
     const loadingString = '<div class="lds-ripple"><div></div><div></div></div>'
     ldsWrapper.insertAdjacentHTML('beforeend', loadingString)
+    const w = 100
+    const s = ele.offsetHeight / w
+    ele.querySelector(".lds-ripple-wrapper").style.transform = `translateX(-${w*0.5}px) scale(${s}, ${s})`
   }
 }
 REST.view.afterFetch = function(ele, ctn, success) {
-  $(ele.closest(ctn)).find(".lds-ripple-wrappe").remove()
   if (success) {
-    $(ele).find(".overlay").remove()
-    $(ele.closest(ctn)).find(".info-fetch").find(".overlay").remove()
+    $(ele.closest(ctn)).find(".info-play-button").removeClass("unavailable")
+    $(ele).removeClass("unavailable")
   }
+  $(ele.closest(ctn)).find(".info-play-button").find(".lds-ripple-wrapper").remove()
+  $(ele).find(".lds-ripple-wrapper").remove()
+}
+REST.view.checkMedia = function() {
+  $(".list ol li").each(function(i) {
+    let playButton = this.querySelector(".info-play-button")
+    REST.view.beforeFetch.blockElement(playButton)
+
+    const item = list[i]
+    $(this).find(".info-season").each(function(s) {
+      $(this).find(".info-episode").each(function(e) {
+        REST.view.beforeFetch.blockElement(this)
+        REST.model.checkMediaFile(item.id, s + 1, e + 1, 'afterFetch', this, 'li')
+      })
+    })
+    if (!item.seasons) {
+      REST.model.checkMediaFile(item.id, '', '', 'afterFetch', playButton, 'li')
+    }
+
+    setTimeout(() => $(this).addClass("list-item--appear"), 0)
+  })
 }
 REST.view.freshList = function() {
   list.forEach((item) => {
     if (item.title != "Demo") {
-      const node = document.querySelector(".list ol li").cloneNode(true)
+      let node = document.querySelector(".list ol li").cloneNode(true)
       let playButton = node.querySelector(".info-play-button")
-      REST.view.beforeFetch.blockElement(playButton)
       let $node = $(node)
       $node.find(".info-title").text(item.title)
       $node.find(".item-poster img").attr("src", item.poster)
-      setTimeout(() => $node.addClass("list-item--appear"), 0)
       playButton.onclick = function () {
         const s = item.seasons ? `&s=1&e=1` : ''
         const ova = item.OVAs ? `&ova=1&e=1` : ''
@@ -49,27 +70,22 @@ REST.view.freshList = function() {
           for (let e = 0; e < item.seasons[s]; e++) {
             let episode = season.appendChild(document.createElement('button'))
             $(episode).addClass("info-episode")
-            $(episode).text(e + 1)
-            REST.view.beforeFetch.blockElement(episode)
-            REST.model.checkMediaFile(item.id, s + 1, e + 1, 'afterFetch', episode, 'li')
+            $(episode).addClass("info-fetch")
+            let num = episode.appendChild(document.createElement('span'))
+            $(num).text(e + 1)
             episode.onclick = function () {
               window.location.href = `${window.location}watch?id=${item.id}&s=${s+1}&e=${e+1}`
             }
           }
         }
-      } else {
-        REST.model.checkMediaFile(item.id, '', '', 'afterFetch', playButton, 'li')
       }
     } else {
-      let demo = document.querySelector(".list ol li")
-      let playButton = demo.querySelector(".info-play-button")
-      REST.view.beforeFetch.blockElement(playButton)
-      REST.model.checkMediaFile(item.id, '', '', 'afterFetch', playButton, 'li')
-      playButton.onclick = function () {
+      document.querySelector(".info-play-button").onclick = function () {
         window.location.href = `${window.location}watch?id=${item.id}`
       }
     }
   })
-  setTimeout(() => $demo.addClass("list-item--appear"), 0)
+
+  REST.view.checkMedia()
 }
 REST.model.getList(list, 'freshList')

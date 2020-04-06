@@ -57,14 +57,11 @@ REST.model.sendAnalyseData()
 
 REST.controller = (function() {
   $(window).scroll(function(eventData) {
-    console.log(eventData)
+    // console.log(eventData)
   })
 })()
 
 REST.view = {
-  popSidePanel: function() {
-
-  },
   error: function(e) {
     $('.error').css('visibility', 'visible')
     setTimeout(function() {
