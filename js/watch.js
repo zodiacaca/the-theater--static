@@ -23,10 +23,9 @@ player.on("canPlay", function() {
 
   player.updateSettings({
     streaming: {
-      abr: {
-        stableBufferTime: 240,
-        bufferTimeAtTopQualityLongForm: 240,
-      }
+      fastSwitchEnabled: true,
+      stableBufferTime: 240,
+      bufferTimeAtTopQualityLongForm: 240,
     }
   })
 
